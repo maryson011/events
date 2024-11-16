@@ -12,3 +12,8 @@
 
 ====================
 npm i
+
+====================
+/apps/backend
+ - npm install prisma --save-dev
+ - npx prisma init --datasource-provider sqlite
