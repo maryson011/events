@@ -1,4 +1,6 @@
 'use client'
+import DashBoardEvento from "@/components/evento/DashBoardEvento"
+import FormSenhaEvento from "@/components/evento/FormSenhaEvento"
 import { Convidado, Evento, eventos } from "@/core"
 import { use, useEffect, useState } from "react"
 
@@ -12,8 +14,7 @@ export default function PAginaAdminEvento(props: any) {
     const presentes = evento?.convidados.filter((c) => c.confirmado) ?? []
     const ausentes = evento?.convidados.filter((c) => !c.confirmado) ?? []
 
-    const totalGeral = evento?.convidados
-        .reduce((total: number, convidado: Convidado) => {
+    const totalGeral = presentes?.reduce((total: number, convidado: Convidado) => {
             return total + convidado.qtdeAcompanhantes + 1
         }, 0)
 
@@ -27,9 +28,18 @@ export default function PAginaAdminEvento(props: any) {
         carregarEvento()
     }, [id, senha])
 
-    return evento ? (
-        <div className="flex flex-col">
-            <span>{evento.nome}</span>
+    return (
+        <div className="flex flex-col items-center">
+            {evento ? (
+                <DashBoardEvento 
+                    evento={evento}
+                    presentes={presentes}
+                    ausentes={ausentes}
+                    totalGeral={totalGeral ?? 0} 
+                />
+            ) : (
+                <FormSenhaEvento />
+            )}
         </div>
-    ) : null
+    )
 }
