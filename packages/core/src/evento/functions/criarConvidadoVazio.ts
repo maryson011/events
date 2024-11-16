@@ -1,4 +1,5 @@
-import { Convidado, Id } from "@/core";
+import { Id } from "../../shared";
+import Convidado from "../model/Convidado";
 
 export default function criarConvidadeVazio(): Partial<Convidado> {
     return {

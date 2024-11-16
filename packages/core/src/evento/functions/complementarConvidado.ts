@@ -1,4 +1,4 @@
-import { Convidado } from "@/core";
+import { Convidado } from "core";
 import validarConvidado from "./validarConvidado";
 
 export default function complementarConvidado(convidado: Partial<Convidado>): Convidado {

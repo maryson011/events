@@ -1,4 +1,4 @@
-import { Evento } from "@/core"
+import Evento from "../model/Evento"
 
 export default function validarEvento(evento: Partial<Evento>): string[] {
     const erros: string[] = []
